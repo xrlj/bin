@@ -1,0 +1,35 @@
+version: "2"
+services:
+  eureka-server:
+    image: 192.168.1.110:8082/xrlj/eureka-server:0.0.1
+    container_name: "eureka-server"
+    ports:
+      - "1111:1111"
+    volumes:
+      - /apps/eureka-server/tmp:/tmp
+      - /apps/eureka-server/logs:/logs
+    environment:
+      - EUREKA_INSTANCE_IP-ADDRESS=172.31.31.31
+      - SPRING_PROFILES_ACTIVE=dev
+    entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.eurekaserver.EurekaServerApplication"]
+    restart: always
+  config-server:
+    image: 192.168.1.110:8082/xrlj/config-server:0.0.1
+    container_name: "config-server"
+    ports:
+      - "3333:3333"
+    volumes:
+      - /apps/config-server/tmp:/tmp
+      - /apps/config-server/logs:/logs
+#      - ./wait-for-it.sh:/wait-for-it.sh
+    environment:
+      - EUREKA_INSTANCE_IP-ADDRESS=172.31.31.31
+      - SPRING_PROFILES_ACTIVE=dev
+    depends_on:
+      - "eureka-server"
+#    entrypoint: ["sh", "/wait-for-it.sh", "eureka-server:1111", "--", "java","-cp","app:app/lib/*","com.xrlj.configserver.ConfigServerApplication"]
+    entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.configserver.ConfigServerApplication"]
+    restart: always
+
+
+
