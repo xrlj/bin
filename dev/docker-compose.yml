@@ -30,6 +30,51 @@ services:
 #    entrypoint: ["sh", "/wait-for-it.sh", "eureka-server:1111", "--", "java","-cp","app:app/lib/*","com.xrlj.configserver.ConfigServerApplication"]
     entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.configserver.ConfigServerApplication"]
     restart: always
-
-
-
+  api-gateway:
+    image: 192.168.1.110:8082/xrlj/api-gateway:0.0.1
+    container_name: "api-gateway"
+    ports:
+      - "5555:5555"
+    volumes:
+      - /apps/api-gateway/tmp:/tmp
+      - /apps/api-gateway/logs:/logs
+    environment:
+      - EUREKA_INSTANCE_IP-ADDRESS=172.31.31.31
+      - SPRING_PROFILES_ACTIVE=dev
+    depends_on:
+      - "eureka-server"
+      - "config-server"
+    entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.apigateway.ApiGatewayApplication"]
+    restart: always
+  service-sys-genid-provider:
+    image: 192.168.1.110:8082/xrlj/service-sys-genid-provider:0.0.1
+    container_name: "service-sys-genid-provider"
+    ports:
+      - "9013:9013"
+    volumes:
+      - /apps/service-sys-genid-provider/tmp:/tmp
+      - /apps/service-sys-genid-provider/logs:/logs
+    environment:
+      - EUREKA_INSTANCE_IP-ADDRESS=172.31.31.31
+      - SPRING_PROFILES_ACTIVE=dev
+    depends_on:
+      - "eureka-server"
+      - "config-server"
+    entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.servicesysgenid.ServiceSysGenidApplication"]
+    restart: always
+  service-auth-provider:
+    image: 192.168.1.110:8082/xrlj/service-auth-provider:0.0.1
+    container_name: "service-auth-provider"
+    ports:
+      - "9017:9017"
+    volumes:
+      - /apps/service-auth-provider/tmp:/tmp
+      - /apps/service-auth-provider/logs:/logs
+    environment:
+      - EUREKA_INSTANCE_IP-ADDRESS=172.31.31.31
+      - SPRING_PROFILES_ACTIVE=dev
+    depends_on:
+      - "eureka-server"
+      - "config-server"
+    entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.serviceauth.ServiceAuthApplication"]
+    restart: always
