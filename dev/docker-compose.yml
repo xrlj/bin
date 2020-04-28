@@ -1,7 +1,7 @@
 version: "2"
 services:
   eureka-server:
-    image: 192.168.1.110:8082/xrlj/eureka-server:0.0.1
+    image: 192.168.0.3:8082/xrlj/eureka-server:0.0.1
     container_name: "eureka-server"
     ports:
       - "1111:1111"
@@ -14,7 +14,7 @@ services:
     entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.eurekaserver.EurekaServerApplication"]
     restart: always
   config-server:
-    image: 192.168.1.110:8082/xrlj/config-server:0.0.1
+    image: 192.168.0.3:8082/xrlj/config-server:0.0.1
     container_name: "config-server"
     ports:
       - "3333:3333"
@@ -31,7 +31,7 @@ services:
     entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.configserver.ConfigServerApplication"]
     restart: always
   api-gateway:
-    image: 192.168.1.110:8082/xrlj/api-gateway:0.0.1
+    image: 192.168.0.3:8082/xrlj/api-gateway:0.0.1
     container_name: "api-gateway"
     ports:
       - "5555:5555"
@@ -47,7 +47,7 @@ services:
     entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.apigateway.ApiGatewayApplication"]
     restart: always
   service-sys-genid-provider:
-    image: 192.168.1.110:8082/xrlj/service-sys-genid-provider:0.0.1
+    image: 192.168.0.3:8082/xrlj/service-sys-genid-provider:0.0.1
     container_name: "service-sys-genid-provider"
     ports:
       - "9013:9013"
@@ -63,7 +63,7 @@ services:
     entrypoint: ["java","-cp","app:app/lib/*","com.xrlj.servicesysgenid.ServiceSysGenidApplication"]
     restart: always
   service-auth-provider:
-    image: 192.168.1.110:8082/xrlj/service-auth-provider:0.0.1
+    image: 192.168.0.3:8082/xrlj/service-auth-provider:0.0.1
     container_name: "service-auth-provider"
     ports:
       - "9017:9017"
