@@ -1,6 +1,6 @@
 ### eureka-server
 
-docker run --restart=always --name eureka-server -p 1111:1111 -v /apps/eureka-server/tmp:/tmp -v /apps/eureka-server/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/eureka-server:0.0.1-release
+docker run --restart=always --name eureka-server -p 6380:1111 -v /apps/eureka-server/tmp:/tmp -v /apps/eureka-server/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/eureka-server:0.0.1-release
 
 ### config-server
 
