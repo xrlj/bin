@@ -8,11 +8,11 @@ docker run --restart=always --name config-server -p 3333:3333 -v /apps/config-se
 
 ### service-sys-genid-provider
 
-docker run --restart=always --name service-sys-genid -p 9014:9014 -v /apps/service-sys-genid/tmp:/tmp -v /apps/service-sys-genid/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/service-sys-genid-provider:0.0.1-release
+docker run --restart=always --name service-sys-genid -v /apps/service-sys-genid/tmp:/tmp -v /apps/service-sys-genid/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/service-sys-genid-provider:0.0.1-release
 
 ### service-auth
 
-docker run --restart=always --name service-auth -p 9017:9017 -v /apps/service-auth/tmp:/tmp -v /apps/service-auth/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/service-auth-provider:0.0.1-release
+docker run --restart=always --name service-auth  -v /apps/service-auth/tmp:/tmp -v /apps/service-auth/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/service-auth-provider:0.0.1-release
 
 ### api-gateway
 对外端口可见
