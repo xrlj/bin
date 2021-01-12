@@ -21,4 +21,8 @@ docker run --restart=always --name service-auth  -v /apps/service-auth/tmp:/tmp 
 
 ### service-usercentral
 
-docker run --restart=always --name service-usercentral  -v /apps/service-usercentral/tmp:/tmp -v /apps/service-usercentral/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 
+docker run --restart=always --name service-usercentral  -v /apps/service-usercentral/tmp:/tmp -v /apps/service-usercentral/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 镜像
+
+### service-ebook
+
+docker run --restart=always --name service-ebook  -v /apps/service-ebook/tmp:/tmp -v /apps/service-ebook/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 镜像
