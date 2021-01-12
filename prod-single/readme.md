@@ -15,5 +15,6 @@ docker run --restart=always --name service-sys-genid -p 9014:9014 -v /apps/servi
 docker run --restart=always --name service-auth -p 9017:9017 -v /apps/service-auth/tmp:/tmp -v /apps/service-auth/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/service-auth-provider:0.0.1-release
 
 ### api-gateway
+对外端口可见
 
-docker run --restart=always --name api-gateway -p 5555:5555 -v /apps/api-gateway/tmp:/tmp -v /apps/api-gateway/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/api-gateway:0.0.1-release
+docker run --restart=always --name api-gateway -p 4369:5555 -v /apps/api-gateway/tmp:/tmp -v /apps/api-gateway/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -d 8.210.22.230:8082/xrlj/api-gateway:0.0.1-release
