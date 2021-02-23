@@ -47,3 +47,7 @@ docker run --restart=always --name service-ebook -p 9033:9033 -v /apps/service-e
 ```shell script
 docker run --restart=always --name service-sys-filesystem -p 9020:9020  -v /apps/service-sys-filesystem/tmp:/tmp -v /apps/service-sys-filesystem/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -e "EUREKA_INSTANCE_IP-ADDRESS=192.168.0.48" -d 镜像
 ```
+
+```shell script
+docker run --restart=always --name service-esign -p 9022:9022  -v /apps/service-esign/tmp:/tmp -v /apps/service-esign/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -e "EUREKA_INSTANCE_IP-ADDRESS=192.168.0.49" -d 镜像
+```
