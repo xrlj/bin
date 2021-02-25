@@ -1,6 +1,6 @@
 ### eureka-server
 
-EUREKA_INSTANCE_IP-ADDRESS=192.168.0.49 配置这个，才能跨主机通讯
+EUREKA_INSTANCE_IP-ADDRESS=192.168.0.49 配置这个，才能跨主机通讯,表明该服务注册到eureka上的ip地址。否则将会是默认是docker内部地址。
 
 ```shell script
 docker run --restart=always --name eureka-server -p 1111:1111 -v /apps/eureka-server/tmp:/tmp -v /apps/eureka-server/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -e "EUREKA_INSTANCE_IP-ADDRESS=192.168.0.49" -d 8.210.22.230:8082/xrlj/eureka-server:0.0.1-release
