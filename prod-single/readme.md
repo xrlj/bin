@@ -36,6 +36,11 @@ docker run --restart=always --name service-auth -p 9017:9017 -v /apps/service-au
 docker run --restart=always --name service-usercentral -p 9015:9015  -v /apps/service-usercentral/tmp:/tmp -v /apps/service-usercentral/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -e "EUREKA_INSTANCE_IP-ADDRESS=192.168.0.48" -d 镜像
 ```
 
+### service-sys-common
+```shell script
+docker run --restart=always --name service-sys-common -p 9000:9000  -v /apps/service-sys-common/tmp:/tmp -v /apps/service-sys-common/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod" -e "EUREKA_INSTANCE_IP-ADDRESS=192.168.0.48" -d 镜像
+```
+
 ### service-ebook
 
 ```shell script
