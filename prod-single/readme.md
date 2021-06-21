@@ -1,3 +1,5 @@
+单机部署
+
 ### eureka-server
 
 EUREKA_INSTANCE_IP-ADDRESS=192.168.0.49 配置这个，才能跨主机通讯,表明该服务注册到eureka上的ip地址。否则将会是默认是docker内部地址。
