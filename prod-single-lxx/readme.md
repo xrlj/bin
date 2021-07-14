@@ -17,7 +17,7 @@ docker run --restart=always --name config-server -p 3333:3333 -v /apps/config-se
 ### api-gateway
 对外端口可见
 ```shell script
-docker run --restart=always --name api-gateway -p 4369:5555 -v /apps/api-gateway/tmp:/tmp -v /apps/api-gateway/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod-single-lxx" -e "EUREKA_INSTANCE_IP-ADDRESS=172.16.19.211" -d 8.210.22.230:8082/xrlj/api-gateway:0.0.1-release
+docker run --restart=always --name api-gateway -p 5555:5555 -v /apps/api-gateway/tmp:/tmp -v /apps/api-gateway/logs:/logs -e "SPRING_PROFILES_ACTIVE=prod-single-lxx" -e "EUREKA_INSTANCE_IP-ADDRESS=172.16.19.211" -d 8.210.22.230:8082/xrlj/api-gateway:0.0.1-release
 ```
 
 ### service-auth
