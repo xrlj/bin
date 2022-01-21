@@ -1,0 +1,42 @@
+version: "2"
+services:
+  mysql-master:
+    image: mysql:8.0.13
+    container_name: "mysql-master"
+    ports:
+      - "3910:3910"
+    volumes:
+      - /server/dockers/mysql-3910/conf:/etc/mysql/conf.d
+      - /server/dockers/mysql-3910/logs:/logs
+      - /server/dockers/mysql-3910/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    restart: always
+  mysql-slave1:
+    image: mysql:8.0.13
+    container_name: "mysql-slave1"
+    ports:
+      - "3911:3911"
+    volumes:
+      - /server/dockers/mysql-3911/conf:/etc/mysql/conf.d
+      - /server/dockers/mysql-3911/logs:/logs
+      - /server/dockers/mysql-3911/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    depends_on:
+      - mysql-master
+    restart: always
+  mysql-slave2:
+    image: mysql:8.0.13
+    container_name: "mysql-slave2"
+    ports:
+      - "3912:3912"
+    volumes:
+      - /server/dockers/mysql-3912/conf:/etc/mysql/conf.d
+      - /server/dockers/mysql-3912/logs:/logs
+      - /server/dockers/mysql-3912/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    depends_on:
+      - mysql-master
+    restart: always
